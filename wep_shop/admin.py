@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ReklamaImage, User, Category, Product, Order, OrderItem, Cart, Delevery, Adres
+from .models import ReklamaImage, User, Category, Product, Order, OrderItem, Cart, Delevery, Address
 
 
 @admin.register(ReklamaImage)
@@ -18,6 +18,12 @@ class UserAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'image']
     search_fields = ['name']
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ['customer', 'status', 'total_price']
+    search_fields = ['custumer']
+    list_filter = ['status']
 
 
 @admin.register(Product)

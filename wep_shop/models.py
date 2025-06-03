@@ -6,8 +6,6 @@ from django.db import models
 class ReklamaImage(models.Model):
     image = models.ImageField(upload_to='Images/reklama/')
 
-    def __str__(self):
-        return self.image
 
 
 class User(models.Model):

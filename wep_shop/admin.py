@@ -1,3 +1,28 @@
 from django.contrib import admin
+from .models import ReklamaImage, User, Category, Product, Order, OrderItem, Cart, Delevery, Adres
 
-# Register your models here.
+
+@admin.register(ReklamaImage)
+class ReklamaImageAdmin(admin.ModelAdmin):
+    list_display = ['id', 'image']
+    search_fields = ['id']
+
+
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ['full_name', 'phone_numper', 'email']
+    search_fields = ['full_name', 'phone_numper', 'email']
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['name', 'image']
+    search_fields = ['name']
+
+
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ['name', 'category', 'price', 'quantity_stock']
+    search_fields = ['name', 'category__name']
+    list_filter = ['category']
+    prepopulated_fields = {'slug': ('name',)}
